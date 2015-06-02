@@ -1,0 +1,25 @@
+{
+  "name": "romanday",
+  "version": "1.0.0",
+  "description": "A simple date-to-roman converter (plus numerals)",
+  "main": "romanDay.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tomsmeding/romanDay.git"
+  },
+  "keywords": [
+    "roman",
+    "numerals",
+    "date",
+    "converter"
+  ],
+  "author": "Tom Smeding <hallo@tomsmeding.nl> (http://tomsmeding.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tomsmeding/romanDay/issues"
+  },
+  "homepage": "https://github.com/tomsmeding/romanDay#readme"
+}

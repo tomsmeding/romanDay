@@ -1,28 +1,31 @@
 var daysInMonth=[31,28,31,30,31,30,31,31,30,31,30,31],
-    monthNames=["Ian","Feb","Mar","Apr","Mai","Iun","Qui","Sex","Sep","Oct","Nov","Dec"],
+    monthNames=[
+    	["Ian","Feb","Mar","Apr","Mai","Iun","Qui","Sex","Sep","Oct","Nov","Dec"],
+    	["Ianuarius","Februarius","Martius","Aprilis","Maius","Iunius","Quintilis","Sextilis","September","October","November","December"]
+    ],
     nonaeDate=[5,5,7,5,7,5,7,5,5,7,5,5];
 
-function romanDay(date){
+function romanDay(date,expanded){
 	var res="",prefixdays=0,shiftMonth=false;
 	var d=date.getDate(),m=date.getMonth(),y=date.getFullYear(),
 	    nonae=nonaeDate[m],idus=nonae+8;
 	if(d!=1&&d<=nonae){
 		prefixdays=nonae-d+1;
-		res="Non.";
+		res=expanded?"Nonae":"Non.";
 	} else if(d!=1&&d<=idus){
 		prefixdays=idus-d+1;
-		res="Id.";
+		res=expanded?"Idus":"Id.";
 	} else {
 		if(d==1)prefixdays=0;
 		else {
 			prefixdays=daysInMonth[m]+1-d+1;
 			shiftMonth=true;
 		}
-		res="Kal.";
+		res=expanded?"Kalendae":"Kal.";
 	}
-	if(prefixdays==2)res="prid. "+res;
+	if(prefixdays==2)res=(expanded?"pridie ":"prid. ")+res;
 	else if(prefixdays>2)res=romanNumeral(prefixdays)+" "+res;
-	if(prefixdays>1)res="a.d. "+res;
+	if(prefixdays>1)res=(expanded?"ante diem ":"a.d. ")+res;
 	if(shiftMonth){
 		m++;
 		if(m==12){
@@ -30,7 +33,7 @@ function romanDay(date){
 			y++;
 		}
 	}
-	res+=" "+monthNames[m]+". an. "+Math.abs(y);
+	res+=" "+(expanded?monthNames[1][m]+" annus ":monthNames[0][m]+". an. ")+romanNumeral(Math.abs(y));
 	return res;
 }
 

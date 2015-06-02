@@ -1,6 +1,6 @@
 {
   "name": "romanday",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple date-to-roman converter (plus numerals)",
   "main": "romanDay.js",
   "scripts": {
